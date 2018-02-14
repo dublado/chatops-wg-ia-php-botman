@@ -12,6 +12,10 @@ services:
         restart: always
         labels:
             - "traefik.frontend.rule=Host: ia004.chatopswg.xyz"
+        logging:
+            options:
+                max-size: 10m
+                max-file: '3'
     php:
         image: nanoninja/php-fpm:7.1
         restart: always
@@ -23,3 +27,7 @@ services:
         #     - "3200:3000"
         labels:
             - "traefik.enable=false"
+        logging:
+            options:
+                max-size: 10m
+                max-file: '3'
