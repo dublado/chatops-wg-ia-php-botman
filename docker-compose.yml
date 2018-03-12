@@ -9,7 +9,7 @@ services:
         # ports:
         #     - "8200:80"
         command: /bin/sh -c "nginx -g 'daemon off;'"
-        restart: always
+        restart: unless-stopped
         labels:
             - "traefik.frontend.rule=Host: ia004.chatopswg.xyz"
         logging:
@@ -18,7 +18,7 @@ services:
                 max-file: '3'
     php:
         image: nanoninja/php-fpm:7.1
-        restart: always
+        restart: unless-stopped
         volumes:
             # - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
             - "./iaphpbotman:/var/www/html"
